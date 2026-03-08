@@ -780,12 +780,10 @@ export default forwardRef<ActionSheetRef, ActionSheetProps>(
 
         prevDeltaY = deltaY;
 
-        if (!start) {
-          start = {
-            x: absoluteX,
-            y: absoluteY,
-          };
-        }
+        start = {
+          x: absoluteX,
+          y: absoluteY,
+        };
 
         const isFullOpen = getCurrentPosition() === 0;
 
@@ -827,13 +825,8 @@ export default forwardRef<ActionSheetRef, ActionSheetProps>(
           }
           //  3. Sheet not fully open, swiping down, scrolling: false, panning: true
           if (!isFullOpen && isSwipingDown) {
-            if (nodeIsScrolling) {
-              scrollable(true);
-              blockPan = true;
-            } else {
-              scrollable(false);
-              blockPan = false;
-            }
+            scrollable(false);
+            blockPan = false;
           }
 
           // 4. Sheet fully open, scroll offset > 0, scrolling: true, panning: false will transition into scrolling: false, panning: true, once scroll reaches offset=0
